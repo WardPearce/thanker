@@ -20,6 +20,9 @@ loop.run_until_complete(example())
 
 ## TODO
 - Ignore duplication (i'm lazy)
+- More unit tests
+- Auto docs
+- Github workflows
 
 ## Thanks to
 - [aiohttp](https://pypi.org/project/aiohttp/) by Nikolay Kim
