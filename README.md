@@ -1,5 +1,5 @@
-# Give thanks to Pypi packages :3
-Don't be a wanker, be a thanker!
+# Don't be a wanker, be a thanker!
+Automatically give thanks to Pypi packages you use in your project!
 
 ## Install
 - `pip3 install thanker`
@@ -20,7 +20,6 @@ loop.run_until_complete(example())
 ```
 
 ## Thanks to
-- [thanker](https://pypi.org/project/thanker/) by WardPearce
 - [aiohttp](https://pypi.org/project/aiohttp/) by Nikolay Kim
 - [attrs](https://pypi.org/project/attrs/) by Hynek Schlawack
 - [chardet](https://pypi.org/project/chardet/) by Mark Pilgrim
