@@ -1,0 +1,4 @@
+aiohttp
+asynctest
+sphinx-material
+sphinxcontrib-trio
