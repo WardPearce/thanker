@@ -1,9 +1,9 @@
-name: Development workflow
+name: Production workflow
 
 on:
   push:
     branches:
-    - Development
+    - Production
 
 jobs:
   base-production:
