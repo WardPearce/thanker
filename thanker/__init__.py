@@ -1,10 +1,10 @@
-import re
-
 from typing import AsyncGenerator, List, Optional
 from aiohttp import ClientSession
 
+from ._scanner import Scanner
 
-__version__ = "0.0.1"
+
+__version__ = "0.0.2"
 __url__ = "https://thanker.readthedocs.io/en/latest/"
 __description__ = "Don't be a wanker, be a thanker!"
 __author__ = "WardPearce"
@@ -54,48 +54,30 @@ class Thanker:
             if resp.status == 200:
                 return (await resp.json())["info"]
 
-    async def scan(self, name: str, current_gratitude: Optional[int] = None
-                   ) -> AsyncGenerator[dict, None]:
+    async def scan(self, name: str) -> AsyncGenerator[dict, None]:
         """Scan for all requirements of a package .
 
         Parameters
         ----------
         name : str
-        current_gratitude : Optional[int], optional
-            by default None
 
         Yields
         -------
         dict
         """
 
-        new_gratitude = (
-            current_gratitude - 1 if current_gratitude is not None
-            else None
-        )
-
-        if new_gratitude != -1:
-            name = re.sub("[^a-zA-Z\\-]+", "", name)
-
-            info = await self.package_info(name)
-            if info:
-                yield info
-
-                if info["requires_dist"]:
-                    for requirement in info["requires_dist"]:
-                        async for info_ in self.scan(requirement,
-                                                     new_gratitude):
-                            yield info_
+        async for info in Scanner(self).scan(name, self._gratitude_level):
+            yield info
 
     async def style(self, layout: str = "- [{name}]({package_url}) by {author}") -> str:  # noqa: E501
-        """Return a string containing all the packages in this package as markdown.
+        """Return a string containing all the packages in this package.
 
         Parameters
         ----------
         layout : str, optional
-            The layout of the thanks, can be any pypi parameter,
+            The layout of the thanks, can be any pypi info parameter,
             e.g. https://pypi.org/pypi/thanker/json/,
-            by default "[{name}]({package_url}) by {author}"
+            by default "- [{name}]({package_url}) by {author}"
 
         Returns
         -------
@@ -104,7 +86,7 @@ class Thanker:
 
         text = ""
         for package in self._packages:
-            async for info in self.scan(package, self._gratitude_level):
+            async for info in self.scan(package):
                 text += layout.format_map(info) + "\n"
 
         return text
