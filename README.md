@@ -19,12 +19,7 @@ loop.run_until_complete(example())
 ```
 
 ## TODO
-- More unit tests
 - Auto docs
-- Github workflows
-    - Pyright
-    - Flake8 linting
-    - Run `run_tests.py`
 
 ## Thanks to
 - [aiohttp](https://pypi.org/project/aiohttp/) by Nikolay Kim
