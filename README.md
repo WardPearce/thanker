@@ -6,6 +6,7 @@ Automatically give thanks to Pypi packages you use in your project!
 - [Examples](#examples)
     - [Command-line](#command-line)
     - [Programmatically](#programmatically)
+- [Supported Pypi parameters](#supported-pypi-parameters)
 - [Thanks to](#thanks-to)
 
 ## Install
@@ -40,6 +41,9 @@ async def example() -> None:
 loop = asyncio.get_event_loop()
 loop.run_until_complete(example())
 ```
+
+## Supported Pypi parameters
+![pypi parameters](https://i.imgur.com/WQoBl2r.png)
 
 ## Thanks to
 - [aiohttp](https://pypi.org/project/aiohttp/) by Nikolay Kim

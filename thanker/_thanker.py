@@ -93,7 +93,8 @@ class Thanker:
         ----------
         layout : str, optional
             The layout of the thanks, can be any pypi info parameter,
-            e.g. https://pypi.org/pypi/thanker/json/,
+            e.g.
+            https://github.com/WardPearce/thanker#supported-pypi-parameters,
             by default "- [{name}]({package_url}) by {author}"
 
         Returns
