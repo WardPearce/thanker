@@ -1,5 +1,3 @@
 aiohttp
 click
 asynctest
-sphinx-material
-sphinxcontrib-trio
