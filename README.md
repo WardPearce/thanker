@@ -1,10 +1,17 @@
 # Don't be a wanker, be a thanker!
 Automatically give thanks to Pypi packages you use in your project!
 
+## Index
+- [Install](#install)
+- [Examples](#examples)
+    - [Command-line](#command-line)
+    - [Programmatically](#programmatically)
+- [Thanks to](#thanks-to)
+
 ## Install
 `pip3 install thanker`
 
-## Example
+## Examples
 ### Command-line
 ```
 Usage: thanks [OPTIONS]
