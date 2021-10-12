@@ -6,13 +6,25 @@ Automatically give thanks to Pypi packages you use in your project!
 
 ## Example
 ### Command-line
+```
+Usage: thanks [OPTIONS]
+
+Options:
+  --packages TEXT            List of packages to thank, seperated by a comma
+  --gratitude_level INTEGER  Basically the depth of requirements we should go
+                             to
+  --layout TEXT              The layout of the thanks, can be any pypi info
+                             parameter
+  --display BOOLEAN          If the output should be displayed in console.
+  --save FILENAME            File to save thanks to
+  --help                     Show this message and exit.
+```
 ![command line gif](https://i.imgur.com/CBsvyB0.gif)
 
 ### Programmatically
 ```py
 import asyncio
 from thanker import Thanker
-
 
 async def example() -> None:
     async with Thanker(packages=["thanker"], gratitude_level=None) as thanks:
