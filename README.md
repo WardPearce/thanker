@@ -54,6 +54,7 @@ loop.run_until_complete(example())
 - [yarl](https://pypi.org/project/yarl/) by Andrew Svetlov
 - [idna](https://pypi.org/project/idna/) by Kim Davies
 - [typing-extensions](https://pypi.org/project/typing-extensions/) by Guido van Rossum, Jukka Lehtosalo, Łukasz Langa, Michael Lee
+- [click](https://pypi.org/project/click/) by Armin Ronacher
 - [asynctest](https://pypi.org/project/asynctest/) by Martin Richard
 - [sphinx-material](https://pypi.org/project/sphinx-material/) by Kevin Sheppard
 - [Sphinx](https://pypi.org/project/Sphinx/) by Georg Brandl
