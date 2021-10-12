@@ -1,7 +1,7 @@
 import os
 import re
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def get_requirements():
@@ -32,9 +32,15 @@ setup(
     author_email=get_variable("__author_email__"),
     install_requires=get_requirements(),
     license=get_variable("__license__"),
-    packages=[
+    py_modules=[
+        "cli_tool",
         "thanker"
     ],
+    packages=find_packages(),
+    entry_points="""
+        [console_scripts]
+        thanks=cli_tool:cli
+    """,
     python_requires=">=3.6",
     include_package_data=True,
     zip_safe=False
