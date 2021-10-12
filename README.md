@@ -2,9 +2,13 @@
 Automatically give thanks to Pypi packages you use in your project!
 
 ## Install
-- `pip3 install thanker`
+`pip3 install thanker`
 
 ## Example
+### Command-line
+![command line gif](https://i.imgur.com/CBsvyB0.gif)
+
+### Programmatically
 ```py
 import asyncio
 from thanker import Thanker
@@ -17,9 +21,6 @@ async def example() -> None:
 loop = asyncio.get_event_loop()
 loop.run_until_complete(example())
 ```
-
-## TODO
-- Auto docs
 
 ## Thanks to
 - [aiohttp](https://pypi.org/project/aiohttp/) by Nikolay Kim
