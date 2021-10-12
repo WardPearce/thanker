@@ -8,7 +8,7 @@ loop = asyncio.get_event_loop()
 
 
 @click.command()
-@click.option("--packages", type=str,
+@click.option("--packages", type=str, required=True,
               help="List of packages to thank, seperated by a comma")
 @click.option("--gratitude_level", type=int, default=None,
               help="Basically the depth of requirements we should go to")
