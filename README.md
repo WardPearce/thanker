@@ -20,13 +20,15 @@ Usage: thanks [OPTIONS]
 Options:
   --packages TEXT            List of packages to thank, seperated by a comma
   --requirements PATH        Used to load a requirements from a requirements
-                             file.
+                             file
   --gratitude_level INTEGER  Basically the depth of requirements we should go
                              to
   --layout TEXT              The layout of the thanks, can be any pypi info
                              parameter
-  --display BOOLEAN          If the output should be displayed in console.
+  --display BOOLEAN          If the output should be displayed in console
   --save FILENAME            File to save thanks to
+  --group_by TEXT            Pypi parameter to group requirements by
+  --group_by_layout TEXT     Layout for group by
   --help                     Show this message and exit.
 ```
 ![command line gif](https://i.imgur.com/CBsvyB0.gif)
