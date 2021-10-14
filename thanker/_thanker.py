@@ -1,4 +1,5 @@
 import asyncio
+import aiofiles
 
 from typing import AsyncGenerator, List, Optional
 from aiohttp import ClientSession
@@ -9,14 +10,15 @@ from ._scanner import Scanner
 class Thanker:
     __pypi_api = "https://pypi.python.org/pypi/{name}/json"
 
-    def __init__(self, packages: List[str],
+    def __init__(self, packages: List[str] = [],
                  gratitude_level: Optional[int] = None) -> None:
         """Used to thank developers of python packages.
 
         Parameters
         ----------
-        packages : List[str]
+        packages : List[str], optional
             List of root packages.
+            by default []
         gratitude_level : Optional[int], optional
             Basically the depth of requirements we should go to,
             by default None
@@ -31,6 +33,17 @@ class Thanker:
 
     async def __aexit__(self, exc_type, exc_val, exc_tb) -> None:
         await self._requests.close()
+
+    async def load_from_requirements(self, path: str) -> None:
+        """Loads root packages from given requirements file.
+
+        Parameters
+        ----------
+        path : str
+        """
+
+        async with aiofiles.open(path, "r") as file:
+            self._packages = (await file.read()).split()
 
     async def package_info(self, name: str) -> Optional[dict]:
         """Get information about a package.

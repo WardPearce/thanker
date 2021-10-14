@@ -1,3 +1,4 @@
 aiohttp
 click
 asynctest
+aiofiles
