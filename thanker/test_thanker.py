@@ -1,7 +1,7 @@
 import asynctest
 from os import path
 
-from . import Thanker
+from . import Thanker, GroupBy
 
 
 class TestThanker(asynctest.TestCase):
@@ -32,5 +32,15 @@ class TestThanker(asynctest.TestCase):
                 path.join(
                     path.dirname(path.realpath(__file__)),
                     "../requirements.txt"
+                )
+            )
+
+    async def test_group_by(self) -> None:
+        async with self.thanker as thanks:
+            await thanks.style(
+                layout="- [{name}]({package_url})",
+                group_by=GroupBy(
+                    group="author",
+                    layout="### Created by {author}\n{__layout__}"
                 )
             )
