@@ -5,6 +5,7 @@ from typing import AsyncGenerator, List, Optional
 from aiohttp import ClientSession
 
 from ._scanner import Scanner
+from ._group_by import GroupBy
 
 
 class Thanker:
@@ -99,7 +100,10 @@ class Thanker:
         async for info in Scanner(self).scan(name, self._gratitude_level):
             yield info
 
-    async def style(self, layout: str = "- [{name}]({package_url}) by {author}") -> str:  # noqa: E501
+    async def style(self,
+                    layout: str = "- [{name}]({package_url}) by {author}",
+                    group_by: GroupBy = None,
+                    ) -> str:
         """Return a string containing all the packages in this package.
 
         Parameters
@@ -109,6 +113,8 @@ class Thanker:
             e.g.
             https://github.com/WardPearce/thanker#supported-pypi-parameters,
             by default "- [{name}]({package_url}) by {author}"
+        group_by : GroupBy, optional
+            What to group requirements by, by default None
 
         Returns
         -------
@@ -116,7 +122,23 @@ class Thanker:
         """
 
         text = ""
-        async for info in self.scan_all():
-            text += layout.format_map(info) + "\n"
+        if not group_by:
+            async for info in self.scan_all():
+                text += layout.format_map(info) + "\n"
+        else:
+            grouppings = {}
+            async for info in self.scan_all():
+                if info[group_by.group] not in grouppings:
+                    grouppings[info[group_by.group]] = ""
+
+                grouppings[info[group_by.group]] += (
+                    layout.format_map(info) + "\n"
+                )
+
+            for group, layout in grouppings.items():
+                text += group_by.layout.format_map({
+                    group_by.group: group,
+                    "__layout__": layout
+                })
 
         return text
