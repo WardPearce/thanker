@@ -102,7 +102,7 @@ class Thanker:
 
     async def style(self,
                     layout: str = "- [{name}]({package_url}) by {author}",
-                    group_by: GroupBy = None,
+                    group_by: Optional[GroupBy] = None,
                     ) -> str:
         """Return a string containing all the packages in this package.
 
@@ -113,7 +113,7 @@ class Thanker:
             e.g.
             https://github.com/WardPearce/thanker#supported-pypi-parameters,
             by default "- [{name}]({package_url}) by {author}"
-        group_by : GroupBy, optional
+        group_by : Optional[GroupBy], optional
             What to group requirements by, by default None
 
         Returns
