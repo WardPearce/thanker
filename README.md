@@ -6,6 +6,7 @@ Automatically give thanks to Pypi packages you use in your project!
 - [Examples](#examples)
     - [Command-line](#command-line)
     - [Programmatically](#programmatically)
+    - [Webpanel](#webpanel)
 - [Supported Pypi parameters](#supported-pypi-parameters)
 - [Thanks to](#thanks-to)
 
@@ -55,6 +56,16 @@ async def example() -> None:
 loop = asyncio.get_event_loop()
 loop.run_until_complete(example())
 ```
+
+### Webpanel
+```py
+from thanker import webpanel
+
+if __name__ == "__main__":
+    webpanel()
+```
+![Image of thanker webpanel, with uvicorn & starlette as the provided packages.](https://i.imgur.com/wEmA3hZ.png)
+
 
 ## Supported Pypi parameters
 ![pypi parameters](https://i.imgur.com/WQoBl2r.png)

@@ -1,1 +1,3 @@
 include requirements.txt
+include thanker/web/template/index.html
+include thanker/web/assets/css/styles.css

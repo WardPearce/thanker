@@ -2,3 +2,7 @@ aiohttp
 click
 asynctest
 aiofiles
+starlette
+uvicorn
+python-multipart
+jinja2
